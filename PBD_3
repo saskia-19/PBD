@@ -358,4 +358,423 @@ B001                      Lemari Es                 Unit
          11
 
 
+SQL> create table PASOK
+  2
+SQL> ;
+  1* create table PASOK
+SQL> alter table BARANG add constraint c_barang primary key (kode_barang);
+
+Table altered.
+
+SQL> alter table SUPLIER add constraint c_suplier primary key (kode_suplier);
+alter table SUPLIER add constraint c_suplier primary key (kode_suplier)
+                                                          *
+ERROR at line 1:
+ORA-00904: "KODE_SUPLIER": invalid identifier
+
+
+SQL> alter table SUPLIER add constraint c_suplier primary key (kode_s);
+
+Table altered.
+
+SQL> create table PASOK (kode_pasok varchar2
+  2  (25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang
+) references BARANG, constarint c_suplier foreign key (kode_s) references SUPLIER;
+(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constarint c_suplier foreign key (kode_s) references SUPLIER
+
+                                     *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> (25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER;
+(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER
+ *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> create table PASOK (kode_pasok varchar2(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER;
+create table PASOK (kode_pasok varchar2(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER
+
+
+            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table PASOK (kode_pasok varchar2(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER);
+create table PASOK (kode_pasok varchar2(25), kode_barang varchar2(25), kode_s varchar2(25), constraint c_barang foreign key (kode_barang) references BARANG, constraint c_suplier foreign key (kode_s) references SUPLIER)
+
+ *
+ERROR at line 1:
+ORA-02264: name already used by an existing constraint
+
+
+SQL> create table PASOK (kode_pasok varchar2(25), kode_barang varchar2(25), kode_s varchar2(25), constraint fk_barang_pasok foreign key (kode_barang) references BARANG, constraint fk_suplier_pasok foreign
+ key (kode_s) references SUPLIER);
+
+Table created.
+
+SQL> select * from PASOK;
+
+no rows selected
+
+SQL> alter table PASOK add (jumlah_pasok number);
+
+Table altered.
+
+SQL> insert into PASOK (kode_pasok, kode_barang, kode_s, jumlah_pasok) values ('PB001','B002','s001',5
+);
+
+1 row created.
+
+SQL> insert into PASOK (kode_pasok, kode_barang, kode_s, jumlah_pasok) values ('PB002','B003','s002',2
+0);
+
+1 row created.
+
+SQL> insert into PASOK (kode_pasok, kode_barang, kode_s, jumlah_pasok) values ('PB003','B002','s002',2
+6);
+
+1 row created.
+
+SQL> select * from PASOK;
+
+KODE_PASOK                KODE_BARANG               KODE_S
+------------------------- ------------------------- -------------------------
+JUMLAH_PASOK
+------------
+PB001                     B002                      s001
+           5
+
+PB002                     B003                      s002
+          20
+
+PB003                     B002                      s002
+          26
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00906: missing left parenthesis
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_costumer varc
+har2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) referances
+ BARANG, constraint fk_costumer_pembelian foreign key (kode_costumer) referances COSTUMER;
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_costumer varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) referances BARANG, constraint fk_costumer_pembelian foreign key (kode_costumer) referances COSTUMER
+
+                                                                                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> alter table COSTUMER add constraint c_costumer primary key (kode_costumer);
+alter table COSTUMER add constraint c_costumer primary key (kode_costumer)
+                                                            *
+ERROR at line 1:
+ORA-00904: "KODE_COSTUMER": invalid identifier
+
+
+SQL> alter table COSTUMER add constraint c_costumer primary key (kode_c);
+
+Table altered.
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) referances BARANG, constraint fk_costumer_pembelian foreign key (kode_co) referances COSTUMER;
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) referances BARANG, constraint fk_costumer_pembelian foreign key (kode_co) referances COSTUMER
+
+                                                                                *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG
+, constraint fk_costumer_pembelian foreign key (kode_co) references COSTUMER;
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG, constraint fk_costumer_pembelian foreign key (kode_co) references COSTUMER
+
+
+                                                                      *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG, constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER;
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG, constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER
+
+
+                                                                     *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG
+(kode_barang), constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER(kode_c);
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG(kode_barang), constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER(kode_c)
+
+
+                                                                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG, constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER);
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint fk_barang_pembelian foreign key (kode_barang) references BARANG, constraint fk_costumer_pembelian foreign key (kode_c) references COSTUMER)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint c_barang_pembelian foreign key (kode_barang) references BARANG,
+ constraint c_costumer_pembelian foreign key (kode_c) references COSTUMER);
+create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint c_barang_pembelian foreign key (kode_barang) references BARANG, constraint c_costumer_pembelian foreign key (kode_c) references COSTUMER)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> select * from PEMBELIAN;
+
+no rows selected
+
+SQL> drop table pembelian;
+
+Table dropped.
+
+SQL> create table PEMBELIAN (kode_pembelian varchar2(25), kode_barang varchar2(25), kode_c varchar2(25), jumlah_pembelian number, constraint c_barang_pembelian foreign key (kode_barang) references BARANG, constraint c_costumer_pembelian foreign key (kode_c) references COSTUMER);
+
+Table created.
+
+SQL> insert into PEMBELIAN ('PB001','B001','c003',30);
+insert into PEMBELIAN ('PB001','B001','c003',30)
+                       *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into PEMBELIAN values ('PB001','B001','c003',30);
+
+1 row created.
+
+SQL> insert into PEMBELIAN values ('PB002','B003','c002',8);
+
+1 row created.
+
+SQL> insert into PEMBELIAN values ('PB003','B003','c003',14);
+
+1 row created.
+
+SQL> select * from PEMBELIAN;
+
+KODE_PEMBELIAN            KODE_BARANG               KODE_C
+------------------------- ------------------------- -------------------------
+JUMLAH_PEMBELIAN
+----------------
+PB001                     B001                      c003
+              30
+
+PB002                     B003                      c002
+               8
+
+PB003                     B003                      c003
+              14
+
+
+SQL> select table_name from users_tables;
+select table_name from users_tables
+                       *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNRGGC_GTLO
+LOGMNRGGC_GTCS
+LOGMNR_PARAMETER$
+LOGMNR_SESSION$
+ROLLING$CONNECTIONS
+ROLLING$DATABASES
+ROLLING$DIRECTIVES
+ROLLING$EVENTS
+ROLLING$PARAMETERS
+ROLLING$PLAN
+ROLLING$STATISTICS
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+ROLLING$STATUS
+MVIEW$_ADV_WORKLOAD
+MVIEW$_ADV_BASETABLE
+MVIEW$_ADV_SQLDEPEND
+MVIEW$_ADV_PRETTY
+MVIEW$_ADV_TEMP
+MVIEW$_ADV_FILTER
+MVIEW$_ADV_LOG
+MVIEW$_ADV_FILTERINSTANCE
+MVIEW$_ADV_LEVEL
+MVIEW$_ADV_ROLLUP
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+MVIEW$_ADV_AJG
+MVIEW$_ADV_FJG
+MVIEW$_ADV_GC
+MVIEW$_ADV_CLIQUE
+MVIEW$_ADV_ELIGIBLE
+MVIEW$_ADV_OUTPUT
+MVIEW$_ADV_EXCEPTIONS
+MVIEW$_ADV_PARAMETERS
+MVIEW$_ADV_INFO
+MVIEW$_ADV_JOURNAL
+MVIEW$_ADV_PLAN
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+AQ$_QUEUE_TABLES
+AQ$_KEY_SHARD_MAP
+AQ$_QUEUES
+AQ$_SCHEDULES
+AQ$_INTERNET_AGENTS
+AQ$_INTERNET_AGENT_PRIVS
+SCHEDULER_PROGRAM_ARGS_TBL
+SCHEDULER_JOB_ARGS_TBL
+LOGSTDBY$PARAMETERS
+REPL_VALID_COMPAT
+REPL_SUPPORT_MATRIX
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TEST
+KATEGORI
+SQLPLUS_PRODUCT_PROFILE
+HELP
+BARANG
+SUPLIER
+COSTUMER
+PASOK
+PEMBELIAN
+LOGMNR_SESSION_EVOLVE$
+LOGMNR_GLOBAL$
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNR_PDB_INFO$
+LOGMNR_DID$
+LOGMNR_UID$
+LOGMNRC_DBNAME_UID_MAP
+LOGMNR_LOG$
+LOGMNR_PROCESSED_LOG$
+LOGMNR_SPILL$
+LOGMNR_AGE_SPILL$
+LOGMNR_RESTART_CKPT_TXINFO$
+LOGMNR_ERROR$
+LOGMNR_RESTART_CKPT$
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNR_FILTER$
+LOGMNR_SESSION_ACTIONS$
+LOGMNR_PROFILE_TABLE_STATS$
+LOGMNR_PROFILE_PLSQL_STATS$
+REDO_DB
+REDO_LOG
+LOGSTDBY$EVENTS
+LOGSTDBY$APPLY_MILESTONE
+LOGSTDBY$SCN
+LOGSTDBY$FLASHBACK_SCN
+LOGSTDBY$PLSQL
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGSTDBY$SKIP_TRANSACTION
+LOGSTDBY$SKIP
+LOGSTDBY$SKIP_SUPPORT
+LOGSTDBY$HISTORY
+LOGSTDBY$EDS_TABLES
+LOGMNR_GT_TAB_INCLUDE$
+LOGMNR_GT_USER_INCLUDE$
+LOGMNR_GT_XID_INCLUDE$
+LOGMNRT_MDDL$
+OL$
+OL$HINTS
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+OL$NODES
+LOGMNR_DICTSTATE$
+LOGMNRC_GTLO
+LOGMNRC_GTCS
+LOGMNRC_SEQ_GG
+LOGMNRC_CON_GG
+LOGMNRC_CONCOL_GG
+LOGMNRC_IND_GG
+LOGMNRC_INDCOL_GG
+LOGMNRC_SHARD_TS
+LOGMNRC_TSPART
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNRC_TS
+LOGMNRC_GSII
+LOGMNRC_GSBA
+LOGMNRC_USER
+LOGMNR_SEED$
+LOGMNR_DICTIONARY$
+LOGMNR_OBJ$
+LOGMNR_TAB$
+LOGMNR_COL$
+LOGMNR_ATTRCOL$
+LOGMNR_TS$
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNR_IND$
+LOGMNR_USER$
+LOGMNR_TABPART$
+LOGMNR_TABSUBPART$
+LOGMNR_TABCOMPART$
+LOGMNR_TYPE$
+LOGMNR_COLTYPE$
+LOGMNR_ATTRIBUTE$
+LOGMNR_LOB$
+LOGMNR_CON$
+LOGMNR_CONTAINER$
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNR_CDEF$
+LOGMNR_CCOL$
+LOGMNR_ICOL$
+LOGMNR_LOBFRAG$
+LOGMNR_INDPART$
+LOGMNR_INDSUBPART$
+LOGMNR_INDCOMPART$
+LOGMNR_LOGMNR_BUILDLOG
+LOGMNR_NTAB$
+LOGMNR_OPQTYPE$
+LOGMNR_SUBCOLTYPE$
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+LOGMNR_KOPM$
+LOGMNR_PROPS$
+LOGMNR_ENC$
+LOGMNR_REFCON$
+LOGMNR_IDNSEQ$
+LOGMNR_PARTOBJ$
+LOGMNRP_CTAS_PART_MAP
+LOGMNR_SHARD_TS
+LOGSTDBY$APPLY_PROGRESS
+
+141 rows selected.
+
+SQL> disconnect
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
 SQL>
