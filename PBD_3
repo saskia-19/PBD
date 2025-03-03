@@ -1,0 +1,361 @@
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 3 08:03:05 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: SYSTEM
+Enter password:
+Last Successful login time: Mon Mar 03 2025 07:49:13 +07:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang)
+  2  VALUES (‘B001’,’Lemari Es’,’unit’,11);
+INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table BARANG (kode_barang number, nama_barang varchar2(25), satuan_barang number, stok_bar
+ang number);
+
+Table created.
+
+SQL> alter table BARANG modify (kode_barang varchar2(25));
+
+Table altered.
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B001','Lemari Es','Unit',11);
+INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B001','Lemari Es','Unit',11)
+                                                                                                  *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B001','Lemari Es','Unit',11); Select * from BARANG;
+INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B001','Lemari Es','Unit',11); Select * from BARANG
+                                                                                                            *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> alter table BARANG modify (satuan_barang varchar2(25));
+
+Table altered.
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B001','Lemari Es','Unit',11);
+
+1 row created.
+
+SQL> Select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B002','Rice Cooker','Buah',23);
+
+1 row created.
+
+SQL> Select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+B002                      Rice Cooker               Buah
+         23
+
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B003','tv');
+INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B003','tv')
+                                                                       *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO barang (kode_barang,nama_barang) values ('B003','tv');
+
+1 row created.
+
+SQL> Select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv
+
+
+
+SQL> INSERT INTO barang (kode_barang,nama_barang,satuan_barang,stok_barang) values ('B004','Radio','Bu
+ah',21);
+
+1 row created.
+
+SQL> Select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv
+
+
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B004                      Radio                     Buah
+         21
+
+
+SQL> create table SUPLIER (kode_s varchar2(25), nama_suplier varchar2(25), alamat_suplier varchar2(25)
+);
+
+Table created.
+
+SQL> insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang')
+, ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung');
+insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang'), ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung')
+                                                                                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang');
+insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang')
+                                          *
+ERROR at line 1:
+ORA-00904: "ALAMAT_SUPLIER": invalid identifier
+
+
+SQL> insert into SUPLIER (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang')
+  2  , ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung');
+, ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung')
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang'), ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung');
+insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang'), ('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung')
+                                                                                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang');
+insert into BARANG (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang')
+                                          *
+ERROR at line 1:
+ORA-00904: "ALAMAT_SUPLIER": invalid identifier
+
+
+SQL> insert into SUPLIER (kode_s, nama_suplier, alamat_suplier) values ('s001', 'PT. Ani', 'Palembang'
+);
+
+1 row created.
+
+SQL> insert into SUPLIER values('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung');
+insert into SUPLIER values('s002', 'PT. Budi', 'Lampung'), ('s003', 'PT. Citra', 'Bandung')
+                                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into SUPLIER values('s002', 'PT. Budi', 'Lampung');
+
+1 row created.
+
+SQL> insert into SUPLIER values('s003', 'PT. Citra', 'Bandung');
+
+1 row created.
+
+SQL> select * from SUPLIER;
+
+KODE_S                    NAMA_SUPLIER              ALAMAT_SUPLIER
+------------------------- ------------------------- -------------------------
+s001                      PT. Ani                   Palembang
+s002                      PT. Budi                  Lampung
+s003                      PT. Citra                 Bandung
+
+SQL> create table COSTUMER (kode_c varchar2(25), nama_costumer varchar2(25), alamat_costumer varchar2(
+25));
+
+Table created.
+
+SQL> insert into COSTUMER values('c001','Doni','Baturaja');
+
+1 row created.
+
+SQL> insert into COSTUMER values('c002','Hana','Palembang');
+
+1 row created.
+
+SQL> insert into COSTUMER values('c003', 'Lili', 'Jakarta');
+
+1 row created.
+
+SQL> select * from COSTUMER;
+
+KODE_C                    NAMA_COSTUMER             ALAMAT_COSTUMER
+------------------------- ------------------------- -------------------------
+c001                      Doni                      Baturaja
+c002                      Hana                      Palembang
+c003                      Lili                      Jakarta
+
+SQL> insert into BARANG (satuan_barang, stok_barang) values ('Unit',30);
+
+1 row created.
+
+SQL> select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv
+
+
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B004                      Radio                     Buah
+         21
+
+                                                    Unit
+         30
+
+
+SQL> delete from BARANG where satuan_barang = 'Unit';
+
+2 rows deleted.
+
+SQL> select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv
+
+
+B004                      Radio                     Buah
+         21
+
+
+SQL> insert into BARANG ('B001', 'Lemari Es', 'Unit', 11);
+insert into BARANG ('B001', 'Lemari Es', 'Unit', 11)
+                    *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into BARANG (kode_barang, nama_barang, satuan barang, stok barang) values ('B001','Lemari
+Es','Unit',11);
+insert into BARANG (kode_barang, nama_barang, satuan barang, stok barang) values ('B001','Lemari Es','Unit',11)
+                                                     *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+SQL> insert into BARANG (kode_barang, nama_barang, satuan_barang, stok_barang) values ('B001','Lemari
+Es','Unit',11);
+
+1 row created.
+
+SQL> select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv
+
+
+B004                      Radio                     Buah
+         21
+
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+
+SQL> update BARANG set satuan_barang = 'Unit', stok_barang = 30 where kode barang = 'B003';
+update BARANG set satuan_barang = 'Unit', stok_barang = 30 where kode barang = 'B003'
+                                                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> update BARANG set satuan_barang = 'Unit', stok_barang = 30 where kode_barang = 'B003';
+
+1 row updated.
+
+SQL> select * from BARANG;
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B002                      Rice Cooker               Buah
+         23
+
+B003                      tv                        Unit
+         30
+
+B004                      Radio                     Buah
+         21
+
+
+KODE_BARANG               NAMA_BARANG               SATUAN_BARANG
+------------------------- ------------------------- -------------------------
+STOK_BARANG
+-----------
+B001                      Lemari Es                 Unit
+         11
+
+
+SQL>
