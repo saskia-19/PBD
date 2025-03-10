@@ -1,0 +1,522 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\PC\Downloads\db-sample-schemas-main\db-sample-schemas-main\customer_orders> sqlplus / as sysdba
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 10 10:57:01 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> @co_install.sql
+
+Thank you for installing the Oracle Customer Orders Sample Schema.
+This installation script will automatically exit your database session
+at the end of the installation or if any error is encountered.
+The entire installation will be logged into the 'co_install.log' log file.
+
+Enter a password for the user CO:
+
+
+Enter a tablespace for CO [USERS]: USERS
+Do you want to overwrite the schema, if it already exists? [YES|no]: YES
+DECLARE
+*
+ERROR at line 1:
+ORA-28014: cannot drop administrative user or role
+ORA-06512: at line 10
+
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+PS C:\Users\PC\Downloads\db-sample-schemas-main\db-sample-schemas-main\customer_orders> sqlplus / as sysdba
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 10 10:58:08 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> SHOW CON_NAME;
+
+CON_NAME
+------------------------------
+CDB$ROOT
+SQL> ALTER SESSION SET CONTAINER=XEPDB1;
+
+Session altered.
+
+SQL> @CO_INSTALL.SQL
+
+Thank you for installing the Oracle Customer Orders Sample Schema.
+This installation script will automatically exit your database session
+at the end of the installation or if any error is encountered.
+The entire installation will be logged into the 'co_install.log' log file.
+
+Enter a password for the user CO:
+
+
+Enter a tablespace for CO [USERS]: USERS
+Do you want to overwrite the schema, if it already exists? [YES|no]: YES
+******  Creating CUSTOMERS table ....
+
+Table created.
+
+******  Creating STORES table ....
+
+Table created.
+
+******  Creating PRODUCTS table ....
+
+Table created.
+
+******  Creating ORDERS table ....
+
+Table created.
+
+******  Creating SHIPMENTS table ....
+
+Table created.
+
+******  Creating ORDER_ITEMS table ....
+
+Table created.
+
+******  Creating INVENTORY table ....
+
+Table created.
+
+******  Create views
+
+View created.
+
+
+View created.
+
+
+View created.
+
+
+View created.
+
+******  Creating indexes ...
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+******  Adding constraints to tables ...
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+******  Adding table column comments ...
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Session altered.
+
+******  Populating CUSTOMERS table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating PRODUCTS table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating STORES table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating ORDERS table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating SHIPMENTS table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating ORDER_ITEMS table ....
+
+PL/SQL procedure successfully completed.
+
+******  Populating INVENTORY table ....
+
+PL/SQL procedure successfully completed.
+
+
+Commit complete.
+
+******  Resetting values for IDENTITY columns ....
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Installation
+-------------
+Verification:
+
+Table         provided     actual
+----------- ---------- ----------
+customers          392        392
+stores              23         23
+products            46         46
+orders            1950       1950
+shipments         1892       1892
+order_items       3914       3914
+inventory          566        566
+
+Thank you!
+--------------------------------------------------------
+The installation of the sample schema is now finished.
+Please check the installation verification output above.
+
+You will now be disconnected from the database.
+
+Thank you for using Oracle Database!
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+PS C:\Users\PC\Downloads\db-sample-schemas-main\db-sample-schemas-main\customer_orders>
