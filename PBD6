@@ -1,0 +1,78 @@
+SQL> select kode_barang, kode_customer, count(*) as jumlah pembelian
+  2  from pembelian
+  3  group by kode_barang, kode_customer;
+select kode_barang, kode_customer, count(*) as jumlah pembelian
+                                                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select kode_barang, kode_customer, count(*) as jumlah_pembelian
+  2  from pembelian
+  3  group by kode_barang, kode_customer;
+
+KODE_B KODE_C JUMLAH_PEMBELIAN
+------ ------ ----------------
+B001   c003                  1
+B003   c002                  1
+B003   c003                  1
+B002   c003                  1
+B004   c003                  1
+
+SQL> select * from pasok;
+
+KODE_P KODE_B KODE_S JUMLAH_PASOK
+------ ------ ------ ------------
+PB001  B002   s001              5
+PB002  B003   s002             20
+PB003  B002   s002             26
+
+SQL> select * from barang;
+
+KODE_B NAMA_BARANG          SATUAN_BAR STOK_BARANG
+------ -------------------- ---------- -----------
+B001   Lemari Es            Unit                11
+B002   Rice Cooker          Buah                23
+B003   tv
+B004   Radio                Bu                  21
+                            ah
+
+
+SQL> alter tabel add (tanggal_pasok varchar2(25));
+alter tabel add (tanggal_pasok varchar2(25))
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command
+
+
+SQL> alter table add (tanggal_pasok varchar2(25));
+alter table add (tanggal_pasok varchar2(25))
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> alter table pasok add (tanggal_pasok varchar2(25));
+
+Table altered.
+
+SQL> alter table pasok modify (tanggal_pasok date);
+
+Table altered.
+
+SQL> update pasok
+  2  set tanggal_pemasokan = TO_DATE('2025-03-17', 'YYYY-MM-DD')
+  3  where kode_pasok = 'PB001';
+set tanggal_pemasokan = TO_DATE('2025-03-17', 'YYYY-MM-DD')
+    *
+ERROR at line 2:
+ORA-00904: "TANGGAL_PEMASOKAN": invalid identifier
+
+
+SQL> update pasok
+  2  set tanggal_pASOK = TO_DATE('2025-03-17', 'YYYY-MM-DD')
+  3  where kode_pasok = 'PB001';
+
+1 row updated.
+
+SQL>
