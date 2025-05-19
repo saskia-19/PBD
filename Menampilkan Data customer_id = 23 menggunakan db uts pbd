@@ -1,0 +1,17 @@
+set serveroutput on
+declare
+    nama varchar2 (30);
+    alamat varchar2 (30);
+    website varchar2 (30);
+begin
+    select name, address, website  
+    into nama, alamat, website
+    from customers
+    where customer_id = 23;
+    
+    dbms_output.put_line('Data Customer dengan kode c023');
+    dbms_output.put_line('Nama : ' || nama);
+    dbms_output.put_line('Alamat : ' || alamat);
+    dbms_output.put_line('Website : ' || website);
+end;
+/
